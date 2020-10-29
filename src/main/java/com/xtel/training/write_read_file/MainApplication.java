@@ -13,8 +13,83 @@ import org.apache.log4j.Logger;
 
 public class MainApplication {
     static final Logger logger = Logger.getLogger(MainApplication.class);
-
+    private static String filePath = "D:\\log\\student.txt";
     ArrayList<Student> listStudent = new ArrayList<>();
+
+    public void inputNumberStudent() {
+        logger.info("Start inputInfoStudent !");
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of students: ");
+        int numberOfStudent = Integer.parseInt(sc.nextLine());
+        for (int i = 0; i < numberOfStudent; i++) {
+            System.out.println("No. " + (i + 1));
+            Student student = new Student();
+            student.inputInfoStudent();
+            listStudent.add(student);
+        }
+        logger.info("End inputInfoStudent !");
+    }
+
+    public void showInfoStudent() {
+        logger.info("Start showInfoStudent !");
+        System.out.print("List of student");
+        for (int i = 0; i < listStudent.size(); i++) {
+            Student student = listStudent.get(i);
+            student.showInfoStudent();
+        }
+        logger.info("End showInfoStudent !");
+    }
+
+    public void writeFile() {
+        File file = new File(filePath);
+        if (file.exists()) {
+            logger.info("Create file successful.Locate file: !" + file.getPath());
+            try {
+                FileOutputStream fileOutputStream = new FileOutputStream(file);
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+                objectOutputStream.writeObject(listStudent);
+                logger.info(listStudent);
+                objectOutputStream.flush();
+                fileOutputStream.close();
+                fileOutputStream.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                logger.error("Error while write file !!!. Message: " + e.getMessage());
+            }
+        } else {
+            logger.error("Create file failure");
+        }
+    }
+
+    public void readFile() {
+        File file = new File(filePath);
+        if (file.exists()) {
+            logger.info("Locate file: " + file.getPath());
+            try {
+                FileInputStream fileInputStream = new FileInputStream(file);
+                ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+                List<Student> listStudent = (List<Student>) objectInputStream.readObject();
+                if (listStudent == null) {
+                    logger.warn("File is empty!");
+                } else {
+                    logger.info(listStudent);
+                    for (Student student : listStudent) {
+                        System.out.println("Student ID: " + student.getId());
+                        System.out.println("Student Name: " + student.getName());
+                        System.out.println("Student Gender (0-nu, 1-nam): " + student.getGender());
+                        System.out.println("Student Address: " + student.getAddress());
+                    }
+                }
+                fileInputStream.close();
+                objectInputStream.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                logger.error("Error while read file. Message: " + e.getMessage());
+            }
+        } else {
+            logger.error("File not exists");
+        }
+    }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -52,80 +127,4 @@ public class MainApplication {
             }
         } while (true);
     }
-    public void inputNumberStudent() {
-        logger.info("Start inputInfoStudent !");
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter number of students: ");
-        int numberOfStudent = Integer.parseInt(sc.nextLine());
-        for (int i = 0; i < numberOfStudent; i++) {
-            System.out.println("No. " + (i + 1));
-            Student student = new Student();
-            student.inputInfoStudent();
-            listStudent.add(student);
-        }
-        logger.info("End inputInfoStudent !");
-    }
-
-    public void showInfoStudent() {
-        logger.info("Start showInfoStudent !");
-        System.out.print("List of student");
-        for (int i = 0; i < listStudent.size(); i++) {
-            Student student = listStudent.get(i);
-            student.showInfoStudent();
-        }
-        logger.info("End showInfoStudent !");
-    }
-
-    public void writeFile() {
-        File file = new File("D:\\log\\student.txt");
-        if (file.exists()) {
-            logger.info("Create file successful.Locate file: !" + file.getPath());
-            try {
-                FileOutputStream fileOutputStream = new FileOutputStream(file);
-                ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-                objectOutputStream.writeObject(listStudent);
-                logger.info(listStudent);
-                objectOutputStream.flush();
-                fileOutputStream.close();
-                fileOutputStream.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-                logger.error("Error while write file !!!. Message: " + e.getMessage());
-            }
-        } else {
-            logger.error("Create file failure");
-        }
-    }
-
-    public void readFile() {
-        File file = new File("D:\\log\\student.txt");
-        if (file.exists()) {
-            logger.info("Locate file: " + file.getPath());
-            try {
-                FileInputStream fileInputStream = new FileInputStream(file);
-                ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-                List<Student> listStudent = (List<Student>) objectInputStream.readObject();
-                if (listStudent == null) {
-                    logger.warn("File is empty!");
-                } else {
-                    logger.info(listStudent);
-                    for (Student student : listStudent) {
-                        System.out.println("com.xtel.training.write_read_file.Student ID: " + student.getId());
-                        System.out.println("com.xtel.training.write_read_file.Student Name: " + student.getName());
-                        System.out.println("com.xtel.training.write_read_file.Student Gender (0-nu, 1-nam): " + student.getGender());
-                        System.out.println("Dia chi: " + student.getAddress());
-                    }
-                }
-                fileInputStream.close();
-                objectInputStream.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-                logger.error("Error while read file. Message: " + e.getMessage());
-            }
-        } else {
-            logger.error("File not exists");
-        }
-    }
-
-
 }
