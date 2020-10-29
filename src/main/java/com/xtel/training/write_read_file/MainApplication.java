@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.xtel.training.write_read_file.entities.Student;
+import com.xtel.training.write_read_file.management.StudentManager;
 import org.apache.log4j.Logger;
 
 public class MainApplication {
@@ -23,7 +25,7 @@ public class MainApplication {
         int numberOfStudent = Integer.parseInt(sc.nextLine());
         for (int i = 0; i < numberOfStudent; i++) {
             System.out.println("No. " + (i + 1));
-            Student student = new Student();
+            StudentManager student = new StudentManager();
             student.inputInfoStudent();
             listStudent.add(student);
         }
@@ -34,7 +36,7 @@ public class MainApplication {
         logger.info("Start showInfoStudent !");
         System.out.print("List of student");
         for (int i = 0; i < listStudent.size(); i++) {
-            Student student = listStudent.get(i);
+            StudentManager student = (StudentManager) listStudent.get(i);
             student.showInfoStudent();
         }
         logger.info("End showInfoStudent !");
@@ -57,7 +59,7 @@ public class MainApplication {
                 logger.error("Error while write file !!!. Message: " + e.getMessage());
             }
         } else {
-            logger.error("Create file failure");
+            logger.error("Create file failure!");
         }
     }
 
