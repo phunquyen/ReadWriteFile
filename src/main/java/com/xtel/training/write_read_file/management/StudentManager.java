@@ -7,7 +7,7 @@ public class StudentManager extends Student {
     public void inputInfoStudent() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Student ID: ");
-        Student.id = sc.nextLine();
+        Student.id = Integer.parseInt(sc.nextLine());
         System.out.print("Student Name: ");
         Student.name = sc.nextLine();
         System.out.print("Student Gender: ");

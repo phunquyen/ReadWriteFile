@@ -6,7 +6,7 @@ public class Student {
 
     public static final Logger logger = Logger.getLogger(Student.class);
 
-    public static String id;
+    public static int id;
     public static String name;
     public static int gender;
     public static String address;
@@ -14,18 +14,18 @@ public class Student {
     public Student() {
     }
 
-    public Student(String id, String name, int gender, String address) {
+    public Student(int id, String name, int gender, String address) {
         this.id = id;
         this.name = name;
         this.gender = gender;
         this.address = address;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

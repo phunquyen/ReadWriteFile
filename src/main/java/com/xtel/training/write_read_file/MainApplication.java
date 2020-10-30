@@ -15,7 +15,7 @@ import org.apache.log4j.Logger;
 
 public class MainApplication {
     static final Logger logger = Logger.getLogger(MainApplication.class);
-    private static String filePath = "D:\\log\\student.txt";
+    private static String filePath = "E:\\work\\ndnp\\training\\ReadWriteFile\\loggingStudent";
     ArrayList<Student> listStudent = new ArrayList<>();
 
     public void inputNumberStudent() {
