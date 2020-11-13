@@ -34,3 +34,16 @@
 2020-10-30 13:48:20 ERROR MainApplication:62 - Create file failure!
 2020-10-30 13:48:35 WARN  MainApplication:122 - Reading file !
 2020-10-30 13:48:35 ERROR MainApplication:92 - File not exists
+2020-10-30 13:55:23 WARN  MainApplication:110 - Insert data ! 
+2020-10-30 13:55:23 INFO  MainApplication:22 - Start inputInfoStudent !
+2020-10-30 13:55:36 INFO  MainApplication:32 - End inputInfoStudent !
+2020-10-30 13:55:39 WARN  MainApplication:114 - Get data !
+2020-10-30 13:55:39 INFO  MainApplication:36 - Start showInfoStudent !
+2020-10-30 13:55:39 INFO  Student:24 -  Student ID: 1 Student Name: phunguyen Student Gender: 1 Student Adress: phungueyn
+2020-10-30 13:55:39 INFO  MainApplication:42 - End showInfoStudent !
+2020-10-30 13:55:45 WARN  MainApplication:118 - Writing file !
+2020-10-30 13:55:45 ERROR MainApplication:62 - Create file failure!
+2020-10-30 13:55:53 WARN  MainApplication:122 - Reading file !
+2020-10-30 13:55:53 ERROR MainApplication:92 - File not exists
+2020-11-13 17:36:29 WARN  MainApplication:110 - Insert data ! 
+2020-11-13 17:36:29 INFO  MainApplication:22 - Start inputInfoStudent !

@@ -15,7 +15,7 @@ import org.apache.log4j.Logger;
 
 public class MainApplication {
     static final Logger logger = Logger.getLogger(MainApplication.class);
-    private static String filePath = "E:\\work\\ndnp\\training\\ReadWriteFile\\loggingStudent";
+    private static String filePath = "log4j.properties";
     ArrayList<Student> listStudent = new ArrayList<>();
 
     public void inputNumberStudent() {
@@ -78,7 +78,7 @@ public class MainApplication {
                     for (Student student : listStudent) {
                         System.out.println("Student ID: " + student.getId());
                         System.out.println("Student Name: " + student.getName());
-                        System.out.println("Student Gender (0-nu, 1-nam): " + student.getGender());
+                        System.out.println("Student Gender (0-female, 1-male): " + student.getGender());
                         System.out.println("Student Address: " + student.getAddress());
                     }
                 }
